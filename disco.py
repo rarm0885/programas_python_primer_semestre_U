@@ -1,31 +1,35 @@
-
-def verificacion_edad():
-    
-    edad=int(input("Ingresa tu edad: "))
-    if edad<0:
-        print("Ingresa bien tu edad...")
+def edad():
+    edad=int(input("Igresa tu edad:  "))
+    while edad<1 or edad>117:
+        edad=int(input("Pusiste tu edad incorrectamente...\nIngresa tu edad de nuevo: "))
     return edad
 
-def verificacion_pase_vip(): 
-    
-    pase_vip=False
-    tiene_pase_vip=input("Tienes pase VIP?? (si/no).\n ")
-    if tiene_pase_vip=="Si" or tiene_pase_vip=="SI":
-        pase_vip=True
-    return pase_vip
-
-
-def verificacion_final(edad,pase_vip):
-    
-    if edad>=18:
-        print("Puedes pasar...")
-    else:
-        if edad<18 and pase_vip==True:
-            print("Puedes pasar chiqui...")
+def vip():
+    v_vip=False
+    eres_vip=False
+    vip=input("Eres usuario VIP? (si o no) ")
+    while v_vip==False:
+        if vip=="SI" or vip=="Si" or vip=="si":
+            eres_vip=True
+            v_vip=True
         else:
-            print("No puedes pasar chiqui...")
+            if vip=="NO" or vip=="No" or vip=="no":
+                v_vip=True
+            else:
+                vip=input("Ingresa el apartado VIP correctamente (si o no)...\nEres usuario VIP? ")
+    return eres_vip
 
+def inicio(ed,vipp):
+    if ed>=18:
+        print("Puedes pasar, no necesitas VIP...")
+    else:
+        if ed<18 and vipp==True:
+            print("Puedes pasar usuario VIP...")
+        else:
+            print("No puedes pasar, necesitas VIP...")
 
-edad_usuario=verificacion_edad()
-usuario_vip=verificacion_pase_vip()
-verificacion_final(edad_usuario, usuario_vip)
+ed=edad()
+vipp=vip()
+inicio(ed,vipp)
+        
+
