@@ -1,14 +1,14 @@
 def valor_sillas(sillasg1,sillasvip):
     #el menu de los valores de las sillas, validaciones, y las sillas que hay
-    print("-------VALOR SILLAS-------")
+    print("\n\n-------VALOR SILLAS-------")
     print("\n1. Silla General")
     print("\n2. Silla VIP")
     print("\n3. Mostrar Valores")
-    print("\n4. Salir al menu")
+    print("\n---------------------------")
     menu_valor_sillas=int(input("\nIngresa alguna de las opciones:\n"))
     verificacion_op=False
     while verificacion_op==False:
-        if menu_valor_sillas==1 or menu_valor_sillas==2 or menu_valor_sillas==3 or menu_valor_sillas==4:
+        if menu_valor_sillas==1 or menu_valor_sillas==2 or menu_valor_sillas==3:
             verificacion_op=True
             break
         else:
@@ -18,24 +18,24 @@ def valor_sillas(sillasg1,sillasvip):
     while menu_valor_sillas<4 and menu_valor_sillas>0:
         if menu_valor_sillas==1:
             print("El valor de las sillas Generales es de $5000")
+            menu()
             break
         if menu_valor_sillas==2:
             print("El valor de las sillas VIP es de $10000")
+            menu()
             break
         if menu_valor_sillas==3:
             for fila in sillasg1:
                 print(fila,"\n")
             print(sillasvip,end=" ")
             print("\n")
+            menu()
             break
-
-    if menu_valor_sillas==4:
-        menu()
 
 
 def comprar_sillas(sillasg1,sillasvip,facturas):
     comprador=[]
-    print("\n-------COMPRAR SILLAS-------")
+    print("\n\n-------COMPRAR SILLAS-------")
     print("\n1. Silla General")
     print("\n2. Silla VIP")
     print("\n3. Ambas")
@@ -89,7 +89,7 @@ def menu():
     sillasvip=[10,11,12,13,14,15]
     facturas=[]
     
-    print("-----------MENU-----------")
+    print("\n\n-----------MENU-----------")
     print("1.Valor sillas")
     print("2.Comprar sillas")
     print("3.Buscar Factura")
