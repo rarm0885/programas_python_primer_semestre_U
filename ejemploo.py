@@ -1,7 +1,7 @@
 import random
 import time
 
-comida=["pizza","chuleta","pasta","comernos"]
+comida =["pizza","chuleta","pasta","pescado","Arepa","Huevos"]
 
 print("Opcion 1:",random.choice(comida))
 time.sleep(2)
