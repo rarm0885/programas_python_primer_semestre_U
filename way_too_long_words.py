@@ -1,4 +1,6 @@
 #la funcion sep="" sirve para que no hayan espacios dentro de un print...
+
+#aunque python lee los str como arreglos (desde 0 hasta ...), la funcion len() los lee como un humano, (desde 0 hasta ...)
 n = int(input())
 for i in range (0,n):
     w = (input("")).lower()
