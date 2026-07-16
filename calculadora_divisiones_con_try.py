@@ -5,11 +5,10 @@ def inputs():
 (Separado por espacios. EJ: 3 4 )\n""")
     while True:
         try: 
-            dividendo, divisor = map(float,input().split())
+            dividendo, divisor = map(float,input("-").split())
             break
         except ValueError:
             print("ERROR: Ingresaste una opcion no valida... Vuelve a intentarlo.")
-
     
     return dividendo, divisor
     
@@ -68,7 +67,6 @@ def menu(historial):
         
         except ValueError:
             print("ERROR: No ingresaste un numero valido... Vuelve a intentarlo.")
-            dividendo, divisor = map(float,input("(Recuerda, se ingresan los numeros con espacios...):\n)").split())
 
     if opcion == 1: 
         historial = errores(historial)
