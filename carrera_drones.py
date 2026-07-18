@@ -1,5 +1,6 @@
 drons = {}
 winner = []
+record = []
 temporary_km = {}
 
 n = int(input())
