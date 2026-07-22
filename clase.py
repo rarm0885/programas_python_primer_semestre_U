@@ -4,6 +4,19 @@ import sys
 
 #animaciones con sys
 
+def animacion_salida():
+    frames = [
+        "Saliendo.",
+        "Saliendo..",
+        "Saliendo...",
+        "Gracias por jugar"
+    ]
+
+    for frame in frames:
+        sys.stdout.write('\r' + frame)
+        sys.stdout.flush()
+        time.sleep(0.9)
+
 def animacion_meta():
     texto = "FELICITACIONES, COMPLETARON EL JUEGO CON EXITO"
     
@@ -18,13 +31,13 @@ def animacion_meta():
 
 
 def animacion_par():
-    #doble barra \\ para que Python imprima una sola \
+    #frames para la animacion
     frames = [
-        "👋 o         👋",
-        "👋   o       👋",
-        "👋     o     👋",
-        "👋       o   👋",
-        "👋         o 👋"
+        f"{'👋 o         👋':^25}",
+        f"{'👋   o       👋':^25}",
+        f"{'👋     o     👋':^25}",
+        f"{'👋       o   👋':^25}",
+        f"{'👋         o 👋':^25}"
     ]
     
     for frame in frames:
@@ -37,11 +50,11 @@ def animacion_par():
 
 def animacion_impar():
     frames = [
-        "👋         o👋",
-        "👋       o  👋",
-        "👋     o    👋",
-        "👋   o      👋",
-        "👋 o        👋"
+        f"{'👋         o👋':^25}",
+        f"{'👋       o  👋':^25}",
+        f"{'👋     o    👋':^25}",
+        f"{'👋   o      👋':^25}",
+        f"{'👋 o        👋':^25}"
     ]
 
     for frame in frames:
@@ -77,6 +90,7 @@ def juego():
     n_jugadores,puntaje = inputs()
     posicion_jugador = 0
     valor = 0
+    acu = 1
 
     while valor < puntaje:
         
@@ -86,8 +100,10 @@ def juego():
             animacion_par()
             
             print(f"{'='*30:<30}")
-            print (f"Jugador {posicion_jugador:<3}: Puntaje {valor:>3}")
+            print (f"Jugador {acu:<3}: Puntaje {valor:>3}")
             print(f"{'='*30:<30}")
+
+
         
         elif posicion_jugador%2==1:
             valor = valor-1
@@ -95,13 +111,15 @@ def juego():
             animacion_impar()
             
             print(f"{'='*30:<30}")
-            print (f"Jugador {posicion_jugador:<3}: Puntaje {valor:>3}")
+            print (f"Jugador {acu:<3}: Puntaje {valor:>3}")
             print(f"{'='*30:<30}")
+
+        acu = acu + 1
         
         posicion_jugador = posicion_jugador + 1
         
-        if posicion_jugador == n_jugadores:
-            posicion_jugador = 0 
+        if acu == n_jugadores:
+            acu = 0 
 
         time.sleep(0.5)
 
@@ -109,4 +127,30 @@ def juego():
     animacion_meta()
 
 
-juego()
+def menu():
+    print()
+    print(f"{'*'*60}")
+    print(f"{'BIENVENIDO AL MEJOR JUEGO DEL MUNDO':^60}")
+    print(f"{'EL JUEGO DE LA PELOTA (SUMAS Y RESTAS)':^60}")
+    print(f"{'*'*60}\n")
+    print("1. Jugar.\n")
+    print("2. Salir.\n")
+
+    while True:
+        try:
+            eleccion_menu = int(input("Ingresa alguna de las dos opciones del menú:\n"))
+            break
+        except ValueError:
+            print("Solo puedes ingresar (1 o 2)...")
+
+    if eleccion_menu == 1:
+        juego()
+        menu()
+    elif eleccion_menu == 2:
+        print()
+        animacion_salida()
+
+
+menu()
+    
+
