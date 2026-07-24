@@ -1,16 +1,36 @@
-print("BIENVENIDO A HELADERIA CHUPALA")
-pedido = 0
+print("--BIENVENIDO A HELADERIA CHUPALA--")
+total = 0
+historial_ventas = []
 def menu ():
     print()
-    print("1. Chocolate: 3$")
-    print("2. Vainilla: 2$")
-    print("3. Salir")
+    print("1. Chocolate: 3$.")
+    print("2. Vainilla: 2$.")
+    print("3. Ver Historial de Ventas.")
+    print("4. Salir")
     print()
 
-    pedidos(pedido)
+    pedidos(total,historial_ventas)
 
 
-def pedidos (pedido):
+def definicion_eleccion(total,historial_ventas):
+    eleccion = input("Deseas otro Helado (si o no):\n").lower()
+    if eleccion == "si" or eleccion =="no":
+        if eleccion == "si":
+            pedidos(total,historial_ventas)
+        elif eleccion == "no":
+            print(f"Tu total es: {total}$")
+            historial_ventas.append(total)
+
+            menu()
+                        
+        else:
+            print("Opcion no valida...")
+            definicion_eleccion(total,historial_ventas)
+        
+    return historial_ventas
+
+
+def pedidos (total,historial_ventas):
     chocolate = 3
     vainilla = 2
 
@@ -19,47 +39,41 @@ def pedidos (pedido):
     except ValueError:
         menu()
 
-    if opcion > 3 or opcion <1:
+    if opcion > 4 or opcion <1:
         print("ERROR: Esa opcion no existe...")
         menu()
 
     if opcion == 1:
         print(f"Son {chocolate}$.\n")
-        pedido = pedido + chocolate
+        total = total + chocolate
 
-        eleccion = definicion_eleccion()
-        if eleccion == "si" or eleccion =="no":
-            if eleccion == "si":
-                pedidos(pedido)
-            elif eleccion == "no":
-                print(f"Tu total es: {pedido}$")
-                
-        else:
-            print("Opcion no valida...")
-            eleccion = definicion_eleccion()
-
+        historial_ventas = definicion_eleccion(total,historial_ventas) 
+ 
     elif opcion == 2:
         print(f"Son {vainilla}$.\n")
-        pedido = pedido + vainilla
+        total = total + vainilla
 
-        eleccion = definicion_eleccion()
-        if eleccion == "si" or eleccion =="no":
-            if eleccion == "si":
-                pedidos(pedido)
-            elif eleccion == "no":
-                print(f"Tu total es: {pedido}$")
-                
-        else:
-            print("Opcion no valida...")
-            eleccion = definicion_eleccion()
+        historial_ventas = definicion_eleccion(total,historial_ventas) 
+
+    elif opcion == 3:
+        print("--HISTORIAL VENTAS--")
+        imprimir_historial(historial_ventas)
+        menu()
 
 
 
-    return pedido
+    return total
 
-def definicion_eleccion():
-    eleccion = input("Deseas otro Helado (si o no):\n").lower()
-    return eleccion 
+
+def imprimir_historial(historial_ventas,x=1):
+    print()
+    if historial_ventas == []:
+        return None
+    else:
+        print(f"{x}. {historial_ventas[0]}")
+        imprimir_historial(historial_ventas[1:],x+1)
+
+
 
 menu()
         
