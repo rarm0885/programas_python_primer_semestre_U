@@ -3,4 +3,4 @@ def potencia(base,exponente):
         return 1
     return base*potencia(base,exponente-1)
 
-print(potencia(2,-2))
+print(potencia(2,3))

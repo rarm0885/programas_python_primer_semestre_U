@@ -10,4 +10,4 @@ def detector_palindromo(palabra):
         return detector_palindromo(centro_de_palabra)
     
 
-print(detector_palindromo("recursivir"))
+print(detector_palindromo("anilina"))

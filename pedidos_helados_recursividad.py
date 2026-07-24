@@ -70,7 +70,7 @@ def imprimir_historial(historial_ventas,x=1):
     if historial_ventas == []:
         return None
     else:
-        print(f"{x}. {historial_ventas[0]}")
+        print(f"{x}. {historial_ventas[0]}$")
         imprimir_historial(historial_ventas[1:],x+1)
 
 
